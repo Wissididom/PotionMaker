@@ -13,11 +13,9 @@
     </ion-card-header>
     <ion-card-content>
       <ion-item>
-        <ion-label>Enabled</ion-label>
         <ion-checkbox
-          slot="end"
           [(ngModel)]="potion.enabled"
-        ></ion-checkbox>
+        >Enabled</ion-checkbox>
       </ion-item>
       <ion-item *ngIf="potion.enabled">
         <ion-input
@@ -38,6 +36,35 @@
       <ion-item *ngIf="potion.enabled">
         <ion-checkbox [(ngModel)]="potion.particles">Particles</ion-checkbox>
       </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Overwall Potion Settings</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-input
+        label="Potion Name"
+        placeholder="Potion Name"
+        [(ngModel)]="potionName"
+      ></ion-input>
+      <ion-checkbox [(ngModel)]="splashPotion">Splash Potion</ion-checkbox>
+      <ion-select interface="popover" [(ngModel)]="potionDesign" placeholder="Design">
+        <ion-select-option value="0">Waterbottle</ion-select-option>
+        <ion-select-option value="1">Potion of Regeneration</ion-select-option>
+        <ion-select-option value="2">Potion of Swiftness</ion-select-option>
+        <ion-select-option value="3">Potion of Fire Resistance</ion-select-option>
+        <ion-select-option value="4">Potion of Poison</ion-select-option>
+        <ion-select-option value="5">Potion of Healing</ion-select-option>
+        <ion-select-option value="6">Potion of Night Vision</ion-select-option>
+        <ion-select-option value="7">Potion of Weakness</ion-select-option>
+        <ion-select-option value="8">Potion of Strength</ion-select-option>
+        <ion-select-option value="9">Potion of Slowness</ion-select-option>
+        <ion-select-option value="10">Potion of Leaping</ion-select-option>
+        <ion-select-option value="11">Potion of Harming</ion-select-option>
+        <ion-select-option value="12">Potion of Water Breathing</ion-select-option>
+        <ion-select-option value="13">Potion of Invisibility</ion-select-option>
+      </ion-select>
     </ion-card-content>
   </ion-card>
   <ion-button expand="block" (click)="generateCommand()"

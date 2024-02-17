@@ -199,15 +199,23 @@ export class HomePage {
       particles: true
     }
   ];
+  public potionName: string = 'Potion';
+  public splashPotion: boolean = false;
+  public potionDesign: number = 0;
   public command: string = '';
 
   constructor() {}
 
   generateCommand() {
-    let result = 'TODO: Command';
+    let designId: number = this.splashPotion ? +this.potionDesign + 16384 : this.potionDesign;
+    let result: string = `/give @p potion 1 ${designId} {display:{Name:${this.potionName}},CustomPotionEffects:[`;
     for (let potion of this.potions) {
-      // TODO: Build command elements
+      if (potion.enabled) {
+      	result += `{Id:${potion.id + 1},Duration:${potion.duration},Amplifier:${potion.amplifier},ShowParticles:${potion.particles}},`;
+      }
     }
+    if (result.endsWith(',')) result = result.substring(0, result.length - 1);
+    result += ']}';
     this.command = result;
   }
 }
