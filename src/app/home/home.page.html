@@ -1,20 +1,81 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      PotionMaker
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content>
+  <ion-card *ngFor="let potion of potions; let i = index;">
+    <ion-card-header>
+      <ion-card-title>{{potion.name}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-checkbox
+          [(ngModel)]="potion.enabled"
+        >Enabled</ion-checkbox>
+      </ion-item>
+      <ion-item *ngIf="potion.enabled">
+        <ion-input
+          type="number"
+          label="Duration"
+          placeholder="Duration"
+          [(ngModel)]="potion.duration"
+        ></ion-input>
+      </ion-item>
+      <ion-item *ngIf="potion.enabled">
+        <ion-input
+          type="number"
+          label="Amplifier"
+          placeholder="Amplifier"
+          [(ngModel)]="potion.amplifier"
+        ></ion-input>
+      </ion-item>
+      <ion-item *ngIf="potion.enabled">
+        <ion-checkbox [(ngModel)]="potion.particles">Particles</ion-checkbox>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Overwall Potion Settings</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-input
+        label="Potion Name"
+        placeholder="Potion Name"
+        [(ngModel)]="potionName"
+      ></ion-input>
+      <ion-checkbox [(ngModel)]="splashPotion">Splash Potion</ion-checkbox>
+      <ion-select interface="popover" [(ngModel)]="potionDesign" placeholder="Design">
+        <ion-select-option value="0">Waterbottle</ion-select-option>
+        <ion-select-option value="1">Potion of Regeneration</ion-select-option>
+        <ion-select-option value="2">Potion of Swiftness</ion-select-option>
+        <ion-select-option value="3">Potion of Fire Resistance</ion-select-option>
+        <ion-select-option value="4">Potion of Poison</ion-select-option>
+        <ion-select-option value="5">Potion of Healing</ion-select-option>
+        <ion-select-option value="6">Potion of Night Vision</ion-select-option>
+        <ion-select-option value="7">Potion of Weakness</ion-select-option>
+        <ion-select-option value="8">Potion of Strength</ion-select-option>
+        <ion-select-option value="9">Potion of Slowness</ion-select-option>
+        <ion-select-option value="10">Potion of Leaping</ion-select-option>
+        <ion-select-option value="11">Potion of Harming</ion-select-option>
+        <ion-select-option value="12">Potion of Water Breathing</ion-select-option>
+        <ion-select-option value="13">Potion of Invisibility</ion-select-option>
+      </ion-select>
+    </ion-card-content>
+  </ion-card>
+  <ion-button expand="block" (click)="generateCommand()"
+    >Generate Command</ion-button
+  >
+  <ion-card *ngIf="command != ''">
+    <ion-card-header>
+      <ion-card-title>Generated Command</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-label>{{command}}</ion-label>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
