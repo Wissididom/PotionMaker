@@ -35,7 +35,7 @@
     "@angular-eslint/schematics": "^18.1.0",
     "@angular-eslint/template-parser": "^18.1.0",
     "@angular/cli": "^18.2.3",
-    "@angular/compiler-cli": "^18.2.3",
+    "@angular/compiler-cli": "^18.2.4",
     "@angular/language-service": "^18.2.3",
     "@ionic/angular-toolkit": "^12.1.1",
     "@types/jasmine": "~5.1.0",
