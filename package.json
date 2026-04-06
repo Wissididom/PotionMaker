@@ -31,7 +31,7 @@
     "@angular/compiler-cli": "^21.2.7",
     "@angular/language-service": "^21.2.7",
     "@ionic/angular-toolkit": "^12.1.1",
-    "typescript": "~5.9.3"
+    "typescript": "~6.0.2"
   },
   "description": "An Ionic project"
 }
