@@ -7,37 +7,45 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let potion of potions; let i = index;">
-    <ion-card-header>
-      <ion-card-title>{{potion.name}}</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-item>
-        <ion-checkbox
-          [(ngModel)]="potion.enabled"
-        >Enabled</ion-checkbox>
-      </ion-item>
-      <ion-item *ngIf="potion.enabled">
-        <ion-input
-          type="number"
-          label="Duration"
-          placeholder="Duration"
-          [(ngModel)]="potion.duration"
-        ></ion-input>
-      </ion-item>
-      <ion-item *ngIf="potion.enabled">
-        <ion-input
-          type="number"
-          label="Amplifier"
-          placeholder="Amplifier"
-          [(ngModel)]="potion.amplifier"
-        ></ion-input>
-      </ion-item>
-      <ion-item *ngIf="potion.enabled">
-        <ion-checkbox [(ngModel)]="potion.particles">Particles</ion-checkbox>
-      </ion-item>
-    </ion-card-content>
-  </ion-card>
+  @for (potion of potions; track potion; let i = $index) {
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{potion.name}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-checkbox
+            [(ngModel)]="potion.enabled"
+          >Enabled</ion-checkbox>
+        </ion-item>
+        @if (potion.enabled) {
+          <ion-item>
+            <ion-input
+              type="number"
+              label="Duration"
+              placeholder="Duration"
+              [(ngModel)]="potion.duration"
+            ></ion-input>
+          </ion-item>
+        }
+        @if (potion.enabled) {
+          <ion-item>
+            <ion-input
+              type="number"
+              label="Amplifier"
+              placeholder="Amplifier"
+              [(ngModel)]="potion.amplifier"
+            ></ion-input>
+          </ion-item>
+        }
+        @if (potion.enabled) {
+          <ion-item>
+            <ion-checkbox [(ngModel)]="potion.particles">Particles</ion-checkbox>
+          </ion-item>
+        }
+      </ion-card-content>
+    </ion-card>
+  }
   <ion-card>
     <ion-card-header>
       <ion-card-title>Overwall Potion Settings</ion-card-title>
@@ -69,13 +77,15 @@
   </ion-card>
   <ion-button expand="block" (click)="generateCommand()"
     >Generate Command</ion-button
-  >
-  <ion-card *ngIf="command != ''">
-    <ion-card-header>
-      <ion-card-title>Generated Command</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-label>{{command}}</ion-label>
-    </ion-card-content>
-  </ion-card>
-</ion-content>
+    >
+    @if (command != '') {
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Generated Command</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-label>{{command}}</ion-label>
+        </ion-card-content>
+      </ion-card>
+    }
+  </ion-content>
