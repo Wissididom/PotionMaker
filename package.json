@@ -30,7 +30,7 @@
     "@angular/cli": "^21.2.7",
     "@angular/compiler-cli": "^21.2.8",
     "@angular/language-service": "^21.2.8",
-    "@ionic/angular-toolkit": "^12.1.1",
+    "@ionic/angular-toolkit": "^13.0.0",
     "typescript": "~5.9.3"
   },
   "description": "An Ionic project"
